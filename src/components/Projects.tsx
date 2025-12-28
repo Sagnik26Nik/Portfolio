@@ -146,7 +146,7 @@ export const Projects = () => {
                 </h2>
               </div>
               <p className="text-lg text-muted-foreground max-w-xl">
-                Production-grade systems spanning AI/ML, distributed architectures, and hardware optimization—delivering measurable performance gains.
+                Production-grade systems spanning AI/ML, distributed architectures, and hardware optimization - delivering measurable performance gains.
               </p>
             </div>
 
