@@ -1,5 +1,5 @@
 import { motion, useMotionValue, useTransform, useSpring } from "framer-motion";
-import { Github, Linkedin, Mail, MapPin, ArrowDown, Sparkles } from "lucide-react";
+import { Github, Linkedin, Mail, MapPin, ArrowDown, Sparkles, Award, Code2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
 
@@ -12,8 +12,14 @@ const socialLinks = [
 const roles = [
   "Full-Stack Engineer",
   "Systems Architect",
-  "AI Researcher",
-  "Data Infrastructure Builder",
+  "ML/AI Researcher",
+  "Database Specialist",
+];
+
+const uniqueTraits = [
+  { icon: Award, text: "3× International Mathematics Olympiad (National) Qualifier", color: "text-yellow-500" },
+  { icon: Code2, text: "Open Source Contributor", color: "text-blue-500" },
+  { icon: Sparkles, text: "FIDE-rated Chess Player", color: "text-purple-500" },
 ];
 
 export const Hero = () => {
@@ -155,28 +161,53 @@ export const Hero = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="max-w-2xl mx-auto text-lg sm:text-xl text-muted-foreground leading-relaxed mb-4"
+          className="max-w-3xl mx-auto text-lg sm:text-xl text-muted-foreground leading-relaxed mb-4"
         >
-          Building high-performance data infrastructure and AI-powered systems that scale.
+          Building <span className="text-foreground font-semibold">high-performance data infrastructure</span> and{" "}
+          <span className="text-foreground font-semibold">AI-powered systems</span> that deliver{" "}
+          <span className="text-primary font-bold">measurable impact</span> at production scale.
         </motion.p>
+
+        {/* Unique traits badges */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5, delay: 0.5 }}
+          className="flex flex-wrap items-center justify-center gap-3 mb-6"
+        >
+          {uniqueTraits.map((trait, index) => (
+            <motion.div
+              key={trait.text}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6 + index * 0.1 }}
+              className="inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-secondary/50 border border-border/50 hover:border-primary/30 transition-colors"
+            >
+              <trait.icon className={`h-4 w-4 ${trait.color}`} />
+              <span className="text-xs font-medium">{trait.text}</span>
+            </motion.div>
+          ))}
+        </motion.div>
 
         {/* Education badge */}
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5, delay: 0.5 }}
+          transition={{ duration: 0.5, delay: 0.7 }}
           className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-primary/10 to-accent/10 border border-primary/20 mb-8"
         >
           <span className="text-sm font-semibold text-foreground">MSCS'27</span>
           <span className="text-muted-foreground">@</span>
           <span className="text-sm font-medium gradient-text">Georgia State University</span>
+          <span className="text-muted-foreground">•</span>
+          <span className="text-sm text-muted-foreground">Magna Cum Laude (BSCS'25)</span>
         </motion.div>
 
         {/* Location */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.55 }}
+          transition={{ duration: 0.6, delay: 0.75 }}
           className="flex items-center justify-center gap-2 text-muted-foreground mb-10"
         >
           <MapPin className="h-4 w-4" />
@@ -187,7 +218,7 @@ export const Hero = () => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.6 }}
+          transition={{ duration: 0.6, delay: 0.8 }}
           className="flex items-center justify-center gap-4 mb-12"
         >
           {socialLinks.map((link, index) => (
@@ -200,7 +231,7 @@ export const Hero = () => {
               whileTap={{ scale: 0.95 }}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6 + index * 0.1 }}
+              transition={{ delay: 0.8 + index * 0.1 }}
               className="group relative p-3 rounded-xl glass-card hover:border-primary/50 transition-all duration-300"
               aria-label={link.label}
             >
@@ -219,8 +250,8 @@ export const Hero = () => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.7 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4"
+          transition={{ duration: 0.6, delay: 0.9 }}
+          className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-20"
         >
           <Button
             asChild
@@ -243,11 +274,13 @@ export const Hero = () => {
             size="lg"
             className="px-8 glass-card border-border/50 hover:border-primary/50 hover:bg-primary/5"
           >
-            <a href="#contact">Get in Touch</a>
+            <a href="/Nik_s_Resume_2026.pdf" download>
+              Download Resume
+            </a>
           </Button>
         </motion.div>
 
-        {/* Scroll Indicator */}
+        {/* Scroll Indicator - Moved down and slightly left with tilt */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}

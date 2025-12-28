@@ -28,14 +28,14 @@ export const ParticleBackground = () => {
     };
 
     const createParticles = () => {
-      const particleCount = Math.floor((canvas.width * canvas.height) / 15000);
+      const particleCount = Math.floor((canvas.width * canvas.height) / 9000); // Balanced density
       particlesRef.current = Array.from({ length: particleCount }, () => ({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        size: Math.random() * 2 + 0.5,
-        speedX: (Math.random() - 0.5) * 0.5,
-        speedY: (Math.random() - 0.5) * 0.5,
-        opacity: Math.random() * 0.5 + 0.2,
+        size: Math.random() * 2.5 + 1, // Medium particles (1-3.5px)
+        speedX: (Math.random() - 0.5) * 0.9,
+        speedY: (Math.random() - 0.5) * 0.9,
+        opacity: Math.random() * 0.5 + 0.35, // Balanced visibility (0.35-0.85)
       }));
     };
 
@@ -53,35 +53,48 @@ export const ParticleBackground = () => {
         if (particle.y < 0) particle.y = canvas.height;
         if (particle.y > canvas.height) particle.y = 0;
 
-        // Mouse interaction
+        // Mouse interaction - balanced effect
         const dx = mouseRef.current.x - particle.x;
         const dy = mouseRef.current.y - particle.y;
         const distance = Math.sqrt(dx * dx + dy * dy);
         
-        if (distance < 150) {
-          const force = (150 - distance) / 150;
-          particle.x -= dx * force * 0.02;
-          particle.y -= dy * force * 0.02;
+        if (distance < 200) { // Balanced interaction radius
+          const force = (200 - distance) / 200;
+          particle.x -= dx * force * 0.06; // Balanced push
+          particle.y -= dy * force * 0.06;
+          
+          // Balanced glow effect near mouse
+          ctx.shadowBlur = 12;
+          ctx.shadowColor = `hsla(221, 83%, 53%, ${force * 0.5})`;
+          ctx.beginPath();
+          ctx.arc(particle.x, particle.y, particle.size * 2, 0, Math.PI * 2);
+          ctx.fillStyle = `hsla(221, 83%, 53%, ${force * 0.35})`;
+          ctx.fill();
+          ctx.shadowBlur = 0;
         }
 
-        // Draw particle
+        // Draw particle with balanced glow
+        ctx.shadowBlur = 10;
+        ctx.shadowColor = `hsla(221, 83%, 53%, ${particle.opacity * 0.8})`;
         ctx.beginPath();
         ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
         ctx.fillStyle = `hsla(221, 83%, 53%, ${particle.opacity})`;
         ctx.fill();
+        ctx.shadowBlur = 0;
 
-        // Draw connections
+        // Draw connections - balanced visibility
         particlesRef.current.slice(i + 1).forEach((other) => {
           const dx = other.x - particle.x;
           const dy = other.y - particle.y;
           const distance = Math.sqrt(dx * dx + dy * dy);
 
-          if (distance < 100) {
+          if (distance < 160) { // Balanced connection distance
             ctx.beginPath();
             ctx.moveTo(particle.x, particle.y);
             ctx.lineTo(other.x, other.y);
-            ctx.strokeStyle = `hsla(221, 83%, 53%, ${0.15 * (1 - distance / 100)})`;
-            ctx.lineWidth = 0.5;
+            const opacity = 0.35 * (1 - distance / 160); // Balanced connection opacity
+            ctx.strokeStyle = `hsla(221, 83%, 53%, ${opacity})`;
+            ctx.lineWidth = 1.2;
             ctx.stroke();
           }
         });
@@ -117,7 +130,7 @@ export const ParticleBackground = () => {
     <canvas
       ref={canvasRef}
       className="fixed inset-0 pointer-events-none z-0"
-      style={{ opacity: 0.6 }}
+      style={{ opacity: 0.6 }} // Added transparency
     />
   );
 };

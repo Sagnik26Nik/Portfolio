@@ -49,15 +49,40 @@ export const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    try {
+      // Using Formspree for email functionality
+      const response = await fetch("https://formspree.io/f/xanyrvld", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          _replyto: formData.email,
+          _subject: `Portfolio Contact from ${formData.name}`,
+        }),
+      });
 
-    toast({
-      title: "Message sent! 🚀",
-      description: "Thanks for reaching out. I'll get back to you soon!",
-    });
-
-    setFormData({ name: "", email: "", message: "" });
-    setIsSubmitting(false);
+      if (response.ok) {
+        toast({
+          title: "Message sent! 🚀",
+          description: "Thanks for reaching out. I'll get back to you soon!",
+        });
+        setFormData({ name: "", email: "", message: "" });
+      } else {
+        throw new Error("Failed to send");
+      }
+    } catch (error) {
+      toast({
+        title: "Oops! Something went wrong",
+        description: "Please try emailing me directly at sagnikc2608@gmail.com",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const containerVariants = {
@@ -128,6 +153,7 @@ export const Contact = () => {
                       </label>
                       <Input
                         id="name"
+                        name="name"
                         placeholder="Your name"
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
@@ -141,6 +167,7 @@ export const Contact = () => {
                       </label>
                       <Input
                         id="email"
+                        name="email"
                         type="email"
                         placeholder="your.email@example.com"
                         value={formData.email}
@@ -156,6 +183,7 @@ export const Contact = () => {
                     </label>
                     <Textarea
                       id="message"
+                      name="message"
                       placeholder="Tell me about your project or opportunity..."
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
