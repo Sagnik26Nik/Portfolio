@@ -6,21 +6,6 @@ import { Button } from "@/components/ui/button";
 
 const projects = [
   {
-    title: "EchoVibe - Emotion Music Recommender",
-    description: "Mood-based music recommendation using DistilBERT emotion detection (0.74 macro-F1) with real-time camera integration.",
-    longDescription: "Fine-tuned on GoEmotions (58K samples, 28 labels) via fp16 training, mapped to Spotify features using Russell's circumplex model. Integrated real-time CV for enhanced emotion detection.",
-    tech: ["Flutter", "Dart", "FastAPI", "DistilBERT", "Transformers", "Firebase", "OpenCV", "MediaPipe"],
-    icon: Smartphone,
-    category: "AI/ML",
-    github: "https://github.com/Sagnik26Nik",
-    live: null,
-    metrics: ["0.74 F1", "28 Emotions", "Real-time CV", "60 FPS UI"],
-    gradient: "from-pink-500 to-rose-500",
-    featured: true,
-    // Image prompt for Gemini: "Mobile app interface showing emotion detection with colorful mood-based music recommendations, modern UI, vibrant gradients, facial recognition overlay, music notes floating"
-    previewImage: "https://images.unsplash.com/photo-1614680376593-902f74cf0d41?w=800&h=600&fit=crop",
-  },
-  {
     title: "NSF-CoSEA Teacher Portal",
     description: "Flask/PostgreSQL platform serving 2K+ Georgia schools with 88% p95 latency reduction.",
     longDescription: "3NF schema decomposition, PostGIS R-tree spatial engine with sub-100ms GeoJSON rendering. Multi-tenant architecture processing 100K+ daily submissions.",
@@ -32,8 +17,37 @@ const projects = [
     metrics: ["2K+ Schools", "88% P95 ↓", "Sub-100ms", "100K+ Records"],
     gradient: "from-blue-500 to-cyan-500",
     featured: true,
-    // Image prompt: "Educational technology dashboard with maps, data analytics, teacher portal interface, clean modern design, blue gradient theme, school data visualization"
     previewImage: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop",
+  }
+  ,
+  {
+    title: "Market Sphere - AI Trading Platform",
+    description: "Real-time AI trading simulation with microservices architecture on Azure Kubernetes.",
+    longDescription: "React 18 concurrent rendering, FastAPI uvloop backend (2x throughput), Databricks Spark analyzing 1M+ OHLCV records via Z-ordered Delta Lake.",
+    tech: ["React", "FastAPI", "Azure", "Kubernetes", "Databricks", "PostgreSQL", "WebSocket"],
+    icon: Database,
+    category: "Full-Stack",
+    github: "https://github.com/Sagnik26Nik",
+    live: null,
+    metrics: ["1K+ msg/sec", "1M+ Records", "HPA Auto-scale"],
+    gradient: "from-cyan-500 to-blue-500",
+    featured: false,
+    previewImage: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=800&h=600&fit=crop",
+  },
+  {
+    title: "EchoVibe - Emotion Music Recommender",
+    description: "Mood-based music recommendation using DistilBERT emotion detection (0.74 macro-F1) with real-time camera integration.",
+    longDescription: "Fine-tuned on GoEmotions (58K samples, 28 labels) via fp16 training, mapped to Spotify features using Russell's circumplex model. Integrated real-time CV for enhanced emotion detection.",
+    tech: ["Flutter", "Dart", "FastAPI", "DistilBERT", "Transformers", "Firebase", "OpenCV", "MediaPipe"],
+    icon: Smartphone,
+    category: "AI/ML",
+    github: "https://github.com/Sagnik26Nik",
+    live: null,
+    metrics: ["0.74 F1", "28 Emotions", "Real-time CV", "60 FPS UI"],
+    gradient: "from-pink-500 to-rose-500",
+    featured: true,
+    // Updated to non-branded music image
+    previewImage: "https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=800&h=600&fit=crop",
   },
   {
     title: "SHADOW: RowHammer Prevention",
@@ -47,7 +61,6 @@ const projects = [
     metrics: ["10⁶× Protection", "<1% Overhead", "<3% Impact"],
     gradient: "from-red-500 to-orange-500",
     featured: true,
-    // Image prompt: "Computer hardware microarchitecture, circuit board close-up, memory chips, technical diagrams, red orange glow, futuristic tech aesthetic"
     previewImage: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&h=600&fit=crop",
   },
   {
@@ -62,7 +75,6 @@ const projects = [
     metrics: ["89% Recall@5", "60% Cache Hit", "800ms→120ms"],
     gradient: "from-purple-500 to-pink-500",
     featured: true,
-    // Image prompt: "AI neural network visualization, data lake with flowing data streams, purple pink gradient, natural language processing, abstract tech background"
     previewImage: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=600&fit=crop",
   },
   {
@@ -77,24 +89,9 @@ const projects = [
     metrics: ["Real-time", "Multi-modal", "Offline Cache", "Route Optimize"],
     gradient: "from-green-500 to-emerald-500",
     featured: false,
-    // Image prompt: "Mobile transit app showing bus routes on map, real-time tracking, modern clean UI, green gradient theme, city navigation interface"
-    previewImage: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&h=600&fit=crop",
-  },
-  {
-    title: "Market Sphere - AI Trading Platform",
-    description: "Real-time AI trading simulation with microservices architecture on Azure Kubernetes.",
-    longDescription: "React 18 concurrent rendering, FastAPI uvloop backend (2x throughput), Databricks Spark analyzing 1M+ OHLCV records via Z-ordered Delta Lake.",
-    tech: ["React", "FastAPI", "Azure", "Kubernetes", "Databricks", "PostgreSQL", "WebSocket"],
-    icon: Database,
-    category: "Full-Stack",
-    github: "https://github.com/Sagnik26Nik",
-    live: null,
-    metrics: ["1K+ msg/sec", "1M+ Records", "HPA Auto-scale"],
-    gradient: "from-cyan-500 to-blue-500",
-    featured: false,
-    // Image prompt: "Stock trading dashboard with real-time charts, candlestick graphs, blue cyan gradient, financial analytics, modern trading interface"
-    previewImage: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=800&h=600&fit=crop",
-  },
+    // Updated to actual public transportation image
+    previewImage: "https://s44873.pcdn.co/wp-content/uploads/2020/09/PublicTransportation-1-1024x453.jpg.webp",
+  }
 ];
 
 const categories = ["All", "AI/ML", "Backend", "Systems", "Mobile", "Full-Stack"];

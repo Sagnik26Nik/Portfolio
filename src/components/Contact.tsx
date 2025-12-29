@@ -220,44 +220,35 @@ export const Contact = () => {
               </div>
             </motion.div>
 
-            {/* Contact Links - 2 columns */}
-            <motion.div variants={itemVariants} className="lg:col-span-2 space-y-6">
-              <div className="space-y-4">
-                <h3 className="text-xl font-semibold">Direct Links</h3>
-                <p className="text-muted-foreground">
-                  Prefer to reach out directly? Here's where you can find me:
-                </p>
-              </div>
+            {/* Contact Links - 2 columns - VERTICALLY CENTERED */}
+            <motion.div variants={itemVariants} className="lg:col-span-2 flex flex-col justify-center space-y-4">
+              {contactLinks.map((link, index) => (
+                <motion.a
+                  key={link.name}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.3 + index * 0.1 }}
+                  whileHover={{ x: 8, scale: 1.02 }}
+                  className="group flex items-center gap-4 p-4 rounded-xl glass-card hover:border-primary/30 transition-all"
+                >
+                  <div className={`p-3 rounded-xl bg-gradient-to-br ${link.color} shadow-lg`}>
+                    <link.icon className="h-5 w-5 text-white" />
+                  </div>
+                  <div className="flex-1">
+                    <div className="text-xs text-muted-foreground uppercase tracking-wider">{link.description}</div>
+                    <div className="font-semibold">{link.value}</div>
+                  </div>
+                  <ArrowUpRight className="h-5 w-5 text-muted-foreground group-hover:text-primary group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+                </motion.a>
+              ))}
 
-              <div className="space-y-4">
-                {contactLinks.map((link, index) => (
-                  <motion.a
-                    key={link.name}
-                    href={link.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.3 + index * 0.1 }}
-                    whileHover={{ x: 8, scale: 1.02 }}
-                    className="group flex items-center gap-4 p-4 rounded-xl glass-card hover:border-primary/30 transition-all"
-                  >
-                    <div className={`p-3 rounded-xl bg-gradient-to-br ${link.color} shadow-lg`}>
-                      <link.icon className="h-5 w-5 text-white" />
-                    </div>
-                    <div className="flex-1">
-                      <div className="text-xs text-muted-foreground uppercase tracking-wider">{link.description}</div>
-                      <div className="font-semibold">{link.value}</div>
-                    </div>
-                    <ArrowUpRight className="h-5 w-5 text-muted-foreground group-hover:text-primary group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
-                  </motion.a>
-                ))}
-              </div>
-
-              {/* Location Card */}
+              {/* Location Card - NOT INTERACTIVE */}
               <motion.div
                 variants={itemVariants}
-                className="glass-card rounded-xl p-6 mt-8"
+                className="glass-card rounded-xl p-6"
               >
                 <div className="flex items-center gap-4">
                   <div className="p-3 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-500 shadow-lg">

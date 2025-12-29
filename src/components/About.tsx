@@ -548,8 +548,6 @@ const ReactLifecycle = ({ onClose }: { onClose: () => void }) => {
 // DOCKER: Container Orchestration Puzzle
 const DockerOrchestrator = ({ onClose }: { onClose: () => void }) => {
   const [score, setScore] = useState(0);
-  const [architecture, setArchitecture] = useState<string[]>([]);
-  
   const requiredServices = ['nginx', 'node', 'postgres', 'redis'];
   const [deployed, setDeployed] = useState<string[]>([]);
 
@@ -729,8 +727,6 @@ const skillGames: Record<string, React.ComponentType<{ onClose: () => void }>> =
   'TypeScript': TypeScriptTyper,
 };
 
-
-// Main About Component
 const skills = {
   "Languages & Core": { 
     icon: Code2, 
@@ -837,24 +833,113 @@ export const About = () => {
           animate={isInView ? "visible" : "hidden"}
           className="space-y-16"
         >
-          {/* Section Header */}
+          {/* Section Header with Programmer Illustration */}
           <motion.div variants={itemVariants} className="space-y-4">
-            <div className="flex items-center gap-4">
-              <h2 className="text-4xl sm:text-5xl font-bold tracking-tight">
-                About <span className="gradient-text">Me</span>
-              </h2>
-              <motion.div
-                animate={{ rotate: 360 }}
-                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                className="w-12 h-12 rounded-full border-2 border-dashed border-primary/30"
-              />
+            <div className="flex items-center gap-6">
+              <div className="flex items-center gap-4">
+                <h2 className="text-4xl sm:text-5xl font-bold tracking-tight">
+                  About <span className="gradient-text">Me</span>
+                </h2>
+              </div>
+              
+              {/* Programmer Illustration with Animated Effects */}
+              <motion.div className="relative w-32 h-32 sm:w-36 sm:h-36">
+                {/* Animated Glow Rings */}
+                <motion.div
+                  animate={{ 
+                    scale: [1, 1.1, 1],
+                    opacity: [0.3, 0.6, 0.3]
+                  }}
+                  transition={{ 
+                    duration: 3, 
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
+                  className="absolute inset-0 rounded-full bg-gradient-to-r from-primary/30 to-accent/30 blur-xl"
+                />
+                
+                {/* Spinning Gradient Border */}
+                <motion.div
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+                  className="absolute inset-0 rounded-full"
+                  style={{
+                    background: "conic-gradient(from 0deg, hsl(221, 83%, 53%), hsl(280, 83%, 60%), hsl(221, 83%, 53%))",
+                    padding: "3px",
+                  }}
+                >
+                  <div className="w-full h-full rounded-full bg-background" />
+                </motion.div>
+
+                {/* Floating Code Symbols */}
+                {['<', '/>', '{', '}'].map((symbol, idx) => (
+                  <motion.div
+                    key={symbol}
+                    animate={{
+                      y: [0, -10, 0],
+                      opacity: [0.4, 0.8, 0.4],
+                      rotate: [0, 10, 0]
+                    }}
+                    transition={{
+                      duration: 2.5,
+                      repeat: Infinity,
+                      delay: idx * 0.4,
+                      ease: "easeInOut"
+                    }}
+                    className={`absolute text-primary font-mono font-bold ${
+                      idx === 0 ? 'top-0 left-2 text-lg' :
+                      idx === 1 ? 'top-0 right-2 text-lg' :
+                      idx === 2 ? 'bottom-0 left-2 text-lg' :
+                      'bottom-0 right-2 text-lg'
+                    }`}
+                  >
+                    {symbol}
+                  </motion.div>
+                ))}
+
+                {/* Main Illustration Container */}
+                <div className="absolute inset-2 rounded-full overflow-hidden bg-gradient-to-br from-primary/10 via-background to-accent/10 border-2 border-primary/20">
+                  {/* The Programmer Illustration */}
+                  <motion.img
+                    src="https://png.pngtree.com/png-vector/20230728/ourmid/pngtree-programmer-clipart-developer-sitting-behind-his-computer-in-glasses-cartoon-vector-png-image_6815441.png"
+                    alt="Developer"
+                    className="w-full h-full object-contain scale-110"
+                    animate={{
+                      y: [0, -5, 0],
+                    }}
+                    transition={{
+                      duration: 4,
+                      repeat: Infinity,
+                      ease: "easeInOut"
+                    }}
+                  />
+                  
+                  {/* Animated Scan Line Effect */}
+                  <motion.div
+                    animate={{ y: ['0%', '100%'] }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      ease: "linear"
+                    }}
+                    className="absolute inset-x-0 h-1 bg-gradient-to-r from-transparent via-primary/50 to-transparent"
+                  />
+                </div>
+
+                {/* Pulsing Dot Indicators */}
+                <motion.div
+                  animate={{ scale: [1, 1.3, 1], opacity: [0.7, 1, 0.7] }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                  className="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-gradient-to-r from-green-500 to-emerald-500 border-2 border-background shadow-lg shadow-green-500/50"
+                />
+              </motion.div>
             </div>
             <p className="text-lg text-muted-foreground max-w-2xl">
               Full-Stack Systems Engineer & Researcher building <span className="text-foreground font-medium">production-grade infrastructure</span> that scales.
             </p>
           </motion.div>
 
-          {/* Bento Grid Layout */}
+          {/* Rest of the component remains the same - Bento Grid Layout */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {/* Bio Card - Spans 2 columns */}
             <motion.div
@@ -862,22 +947,12 @@ export const About = () => {
               className="lg:col-span-2 glass-card p-8 rounded-2xl"
             >
               <div className="space-y-4 text-muted-foreground leading-relaxed">
-                <p className="text-lg">
-                  Building <span className="text-foreground font-semibold">high-performance data infrastructure</span> and{" "}
-                  <span className="text-foreground font-semibold">AI-powered systems</span> that scale. I specialize in{" "}
-                  <span className="text-foreground font-medium">database query optimization</span>,{" "}
-                  <span className="text-foreground font-medium">distributed systems architecture</span>, and{" "}
-                  <span className="text-foreground font-medium">full-stack applications</span> delivering measurable performance gains.
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  I architect systems where milliseconds define user experience and elegance meets scale. Specializing in database internals, distributed systems, and AI/ML pipelines, from decomposing monolithic schemas into normalized models that slash query latency, to building semantic search engines that turn natural language into executable SQL. My work lives at the intersection of theoretical computer science and production engineering, where the right index placement saves thousands of users from waiting and clever caching strategies transform system responsiveness.
                 </p>
-                <p>
-                  Currently pursuing <span className="text-foreground font-medium">Master's in Computer Science</span> at{" "}
-                  <span className="text-foreground font-medium">Georgia State University</span> (MSCS'27) while architecting production systems with{" "}
-                  <span className="inline-flex items-center px-2 py-0.5 rounded-md bg-primary/10 text-primary font-bold">40% latency reduction</span>,{" "}
-                  <span className="inline-flex items-center px-2 py-0.5 rounded-md bg-green-500/10 text-green-500 font-bold">99.9% data accuracy</span>, and{" "}
-                  <span className="inline-flex items-center px-2 py-0.5 rounded-md bg-yellow-500/10 text-yellow-500 font-bold">sub-100ms analytics</span>.
-                </p>
+                
                 <div className="pt-4 border-t border-border/50">
-                  <p className="text-sm font-medium text-foreground mb-2">Core Competencies:</p>
+                  <p className="text-lg font-medium text-foreground mb-2">Core Competencies:</p>
                   <p className="text-sm">
                     <span className="text-foreground">Systems:</span> Distributed architectures • Query optimization • Microservices<br/>
                     <span className="text-foreground">Data:</span> PostgreSQL • Redis • Spark • Real-time processing<br/>
@@ -908,16 +983,16 @@ export const About = () => {
                 <motion.div
                   key={stat.label}
                   whileHover={{ scale: 1.05, y: -5 }}
-                  className="glass-card rounded-xl overflow-hidden text-center group relative"
+                  className="glass-card rounded-xl overflow-hidden text-center group relative min-h-[200px]"
                 >
-                  <div className="absolute inset-0 opacity-10 group-hover:opacity-20 transition-opacity">
+                  <div className="absolute inset-0 opacity-25 group-hover:opacity-40 transition-opacity">
                     <img 
                       src={stat.image} 
                       alt={stat.label}
                       className="w-full h-full object-cover"
                     />
                   </div>
-                  <div className="relative z-10 p-4">
+                  <div className="relative z-10 p-4 flex flex-col items-center justify-center   min-h-[200px]">
                     <div className={`inline-flex p-2 rounded-lg bg-gradient-to-br ${stat.color} mb-2`}>
                       <stat.icon className="h-4 w-4 text-white" />
                     </div>
