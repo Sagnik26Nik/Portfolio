@@ -6,8 +6,7 @@ import { Briefcase, Calendar, MapPin, Award } from "lucide-react";
 const experiences = [
   {
     title: "Graduate Research Assistant",
-    subtitle: "NSF-CoSEA Teacher Portal",
-    company: "Georgia State University",
+    company: "National Science Foundation - Computer Science Department at Georgia State University", 
     location: "Atlanta, GA",
     period: "Aug 2025 - Present",
     achievements: [
@@ -18,9 +17,8 @@ const experiences = [
     color: "from-blue-500 to-cyan-500"
   },
   {
-    title: "Graduate Teaching Assistant",
-    subtitle: "Computer Science Department",
-    company: "Georgia State University",
+    title: "Graduate Teaching Assistant (formerly, Undergraduate Teaching Assistant)",
+    company: "Computer Science Department at Georgia State University",
     location: "Atlanta, GA",
     period: "Sep 2024 - Aug 2025",
     achievements: [
@@ -32,8 +30,7 @@ const experiences = [
   },
   {
     title: "User Students and Technology Services Assistant",
-    subtitle: "University Library",
-    company: "Georgia State University",
+    company: "University Library at Georgia State University",
     location: "Atlanta, GA",
     period: "Sep 2023 - Dec 2025",
     achievements: [
@@ -45,8 +42,7 @@ const experiences = [
   },
   {
     title: "Computing and Informatics Center Tutor",
-    subtitle: "Research Innovation and Scholarly Excellence Grant",
-    company: "Georgia State University",
+    company: "Research Innovation and Scholarly Excellence Grant - Georgia State University",
     location: "Atlanta, GA",
     period: "Sep 2023 - May 2025",
     achievements: [
@@ -58,8 +54,7 @@ const experiences = [
   },
   {
     title: "Inventory Analytics Team Associate",
-    subtitle: "University Housing",
-    company: "Georgia State University",
+    company: "University Housing at Georgia State University",
     location: "Atlanta, GA",
     period: "Apr 2023 - Aug 2023",
     achievements: [
@@ -71,8 +66,7 @@ const experiences = [
   },
   {
     title: "Peer Academic Mentor and UAP",
-    subtitle: "Department of Student Success",
-    company: "Georgia State University",
+    company: "Department of Student Success atGeorgia State University",
     location: "Atlanta, GA",
     period: "Feb 2023 - Aug 2023",
     achievements: [
@@ -84,8 +78,7 @@ const experiences = [
   },
   {
     title: "Student Floor Manager",
-    subtitle: "Patton Dining Hall",
-    company: "Georgia State University",
+    company: "Patton Dining Hall at Georgia State University",
     location: "Atlanta, GA",
     period: "Aug 2022 - Feb 2023",
     achievements: [

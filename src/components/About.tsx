@@ -790,9 +790,9 @@ const stats = [
 ];
 
 const achievements = [
-  { icon: Award, label: "3× Math Olympiad Qualifier", detail: "National-level competition", color: "from-yellow-500 to-orange-500" },
+  { icon: Award, label: "3× International Math Olympiad", detail: "National-level Qualifier", color: "from-yellow-500 to-orange-500" },
   { icon: Trophy, label: "Algorithm Optimization Expert", detail: "75% complexity reduction success", color: "from-blue-500 to-cyan-500" },
-  { icon: Sparkles, label: "FIDE Chess Player", detail: "Strategic problem-solver", color: "from-purple-500 to-pink-500" },
+  { icon: Sparkles, label: "FIDE-rated Chess Player", detail: "Strategic problem-solver", color: "from-purple-500 to-pink-500" },
   { icon: Shield, label: "JPMorgan Software Engineering", detail: "Virtual Experience Program", color: "from-green-500 to-emerald-500" },
   { icon: Cloud, label: "AWS Solutions Architect", detail: "Cloud infrastructure certified", color: "from-orange-500 to-red-500" },
   { icon: Database, label: "AWS Cloud Practitioner", detail: "Cloud fundamentals certified", color: "from-cyan-500 to-blue-500" },
