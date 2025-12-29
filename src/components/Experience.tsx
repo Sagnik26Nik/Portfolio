@@ -66,7 +66,7 @@ const experiences = [
   },
   {
     title: "Peer Academic Mentor and UAP",
-    company: "Department of Student Success atGeorgia State University",
+    company: "Department of Student Success at Georgia State University",
     location: "Atlanta, GA",
     period: "Feb 2023 - Aug 2023",
     achievements: [
